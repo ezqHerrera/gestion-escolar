@@ -1,7 +1,6 @@
 const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
-// TODO implementar validaciones
 
 class Server {
     constructor(){
