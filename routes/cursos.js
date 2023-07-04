@@ -2,6 +2,19 @@ const express = require('express');
 const router = express.Router();
 const cursosController = require('../controllers/cursosController');
 
+const { validarCampos } = require('../middlewares/validar-campos');
+const { check } = require('express-validator');
+const { addCourse, updateCourse } = require('../models/cursosModel');
+
+router.post('/',
+    [
+        check('nombre', 'El nombre es obligatorio').not().isEmpty(),
+        check('descripcion', 'La descripción es obligatoria').not().isEmpty(),
+        validarCampos
+    ],
+    addCourse
+)
+
 // Métodos para:
 router.get('/', cursosController.getCourses); // Obtener todos los cursos
 router.get('/:id', cursosController.getCourseById); // Obtener un curso por su ID
