@@ -70,17 +70,21 @@ exports.addStudentToCourse = async(numero) => {
  * Obtiene los estudiantes de un curso.
  * El id del curso debe coincidir en la URL de la consulta,
  * por ejemplo: /api/cursos/1/estudiantes
- * donde 1 = @param idCurso
+ * donde 1 = @param id
  */
-exports.getCoursesStudents = async(idCurso) => {
-    const [rows, fields] = await db.execute('SELECT * FROM estudiantes_cursos WHERE idCurso=?', [idCurso]);
+exports.getCoursesStudents = async(id) => {
+    const [rows, fields] = await db.execute('SELECT estudiantes.nombre FROM estudiantes_cursos INNER JOIN estudiantes ON estudiantes_cursos.idEstudiante = estudiantes.id INNER JOIN cursos ON estudiantes_cursos.idCurso = cursos.id AND cursos.id = ?', [id]);
     console.log(rows);
     return rows;
 };
 
-// TODO data is undefined???
-exports.deleteStudentFromCourse = async(ides) => {
-    const [rows, fields] = await db.execute('DELETE FROM estudiantes_cursos WHERE idCurso=? AND idEstudiante=?', [ides.idCurso, ides.idEstudiante]);
-    console.log(rows);
+/**
+ * Elimina un estudiante de un curso según el id de cada uno.
+ * En la URL de la consulta se especifican ambas.
+ * Por ejemplo: /api/cursos/1/estudiantes/2
+ * donde 1 = @param idCurso y 2 = @param idEstudiante
+ */
+exports.deleteStudentFromCourse = async(idEstudiante, idCurso) => {
+    const [rows, fields] = await db.execute('DELETE FROM estudiantes_cursos WHERE idEstudiante=? AND idCurso=?', [idEstudiante, idCurso]);
     return rows;
 };
