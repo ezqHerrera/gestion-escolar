@@ -17,6 +17,7 @@
     "nodemon": "^2.0.22"
   },
   "dependencies": {
+    "escape-string-regexp": "^5.0.0",
     "express-validator": "^7.0.1"
   }
 }
