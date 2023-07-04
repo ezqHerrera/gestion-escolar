@@ -1,11 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const estudiantesController = require('../controllers/estudiantesController');
-const connection = require('../config/db');
 
 const { validarCampos } = require('../middlewares/validar-campos');
 const { check } = require('express-validator');
-const { getStudents, getStudentById, addStudent, updateStudent, deleteStudent, getStudentsCourses } = require('../models/estudiantesModel');
+const { addStudent, updateStudent } = require('../models/estudiantesModel');
 
 router.post('/',
     [
