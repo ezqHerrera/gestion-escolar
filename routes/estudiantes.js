@@ -37,9 +37,10 @@ router.post('/',
         check('edad', 'La edad debe ser obligatoria').not().isEmpty(),
         check('edad', 'La edad debe ser numérica').isNumeric,
         check('grado', 'El grado es obligatorio').not().isEmpty,
-        check('grado', 'El grado debe ser una cadena de caracteres').isString
+        check('grado', 'El grado debe ser una cadena de caracteres').isString,
+        validarCampos
     ],
-    validarCampos
+    addStudent
 )
 
 // Métodos para:
