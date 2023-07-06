@@ -1,6 +1,10 @@
 const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
+<<<<<<< HEAD
+=======
+
+>>>>>>> 80bab290aa7c1817c80907cc617c0fc7dedc3e8c
 class Server {
     constructor(){
         this.app = express();

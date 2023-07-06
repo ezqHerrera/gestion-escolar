@@ -126,7 +126,7 @@ exports.addStudentToCourse = async(req, res) => {
     try {
         const student = await cursosModel.addStudentToCourse(idNumbers);
         if (!student) {
-            res.status(404).json({
+            res.status(400).json({
                 success: false,
                 msg: 'No se pudo agregar al estudiante al curso'
             })
@@ -150,7 +150,7 @@ exports.getCoursesStudents = async(req, res) => {
     try {
         const studentsCurso = await cursosModel.getCoursesStudents(idStudents);
         if (!studentsCurso) {
-            res.status(404).json({
+            res.status(400).json({
                 success: false,
                 msg: 'No se encontraron los datos del curso'
             })
@@ -168,13 +168,14 @@ exports.getCoursesStudents = async(req, res) => {
     }
 }
 
-// REVISAR
+// Función que elimina un estudiante de un curso.
 exports.deleteStudentFromCourse = async(req, res) => {
-    const ides = req.body;
+    const idCurso = req.params.id;
+    const idEstudiante = req.params.idEstudiante;
     try {
-        const estudiante = await cursosModel.deleteStudentFromCourse(ides);
+        const estudiante = await cursosModel.deleteStudentFromCourse(idEstudiante, idCurso);
         if (!estudiante) {
-            res.status(404).json({
+            res.status(400).json({
                 success: false,
                 msg: 'No se encontró un estudiante'
             })

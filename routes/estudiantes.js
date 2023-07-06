@@ -6,7 +6,10 @@ const { validarCampos } = require('../middlewares/validar-campos');
 const { check } = require('express-validator');
 const { addStudent, updateStudent } = require('../models/estudiantesModel');
 
+<<<<<<< HEAD
 // Validaciones del método POST
+=======
+>>>>>>> 80bab290aa7c1817c80907cc617c0fc7dedc3e8c
 router.post('/',
     [
         check('nombre', 'El nombre es obligatorio').not().isEmpty(),
@@ -19,6 +22,7 @@ router.post('/',
     ],
     addStudent
 )
+<<<<<<< HEAD
 // Validaciones del método PUT
 router.put('/',
     [
@@ -32,6 +36,8 @@ router.put('/',
     ],
     updateStudent
 )
+=======
+>>>>>>> 80bab290aa7c1817c80907cc617c0fc7dedc3e8c
 
 // Métodos para:
 router.get('/', estudiantesController.getStudents); // Obtener todos los estudiantes
