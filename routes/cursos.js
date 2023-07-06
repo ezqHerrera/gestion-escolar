@@ -4,14 +4,9 @@ const cursosController = require('../controllers/cursosController');
 
 const { validarCampos } = require('../middlewares/validar-campos');
 const { check } = require('express-validator');
-<<<<<<< HEAD
 const { addCourse, updateCourse, addStudentToCourse } = require('../models/cursosModel');
 
 // Validaciones del método POST
-=======
-const { addCourse, updateCourse } = require('../models/cursosModel');
-
->>>>>>> 80bab290aa7c1817c80907cc617c0fc7dedc3e8c
 router.post('/',
     [
         check('nombre', 'El nombre es obligatorio').not().isEmpty(),
@@ -20,7 +15,6 @@ router.post('/',
     ],
     addCourse
 )
-<<<<<<< HEAD
 router.post('/:id/estudiantes',
     [
         check('idEstudiante', 'El ID del estudiante es obligatorio').not().isEmpty(),
@@ -41,8 +35,6 @@ router.put('/',
     ],
     updateCourse
 )
-=======
->>>>>>> 80bab290aa7c1817c80907cc617c0fc7dedc3e8c
 
 // Métodos para:
 router.get('/', cursosController.getCourses); // Obtener todos los cursos
