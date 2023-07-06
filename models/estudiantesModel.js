@@ -60,7 +60,7 @@ exports.deleteStudent = async(id) => {
  * donde 1 = @param idEstudiante
  */
 exports.getStudentsCourses = async(idEstudiante) => {
-    const [rows, fields] = await db.execute('SELECT * FROM estudiantes_cursos WHERE idEstudiante=?', [idEstudiante]);
+    const [rows, fields] = await db.execute('SELECT cursos.nombre FROM estudiantes_cursos INNER JOIN cursos ON estudiantes_cursos.idCurso = cursos.id INNER JOIN estudiantes ON estudiantes_cursos.idEstudiante = estudiantes.id AND estudiantes.id = ?', [idEstudiante]);
     console.log(rows);
     return rows;
 }
